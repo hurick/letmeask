@@ -1,3 +1,9 @@
+$white: #fff
+$dk-white: darken($white, 3%)
+$lt-gray: #a8a8b3
+$purple: #835afd
+$google-red: #ea4335
+
 .Home
   display: flex
   align-items: stretch
@@ -10,8 +16,8 @@
   justify-content: center
   align-items: center
 
-  background-color: #835afd
-  color: #fff
+  background-color: $purple
+  color: $white
 
   .C__Illustration
     max-width: 328px
@@ -22,7 +28,7 @@
 
   .C__Subtitle
     font: 400 2.4rem/1em 'Poppins', sans-serif
-    color: #f8f8f8
+    color: $dk-white
 
 .Auth
   flex: 1.7
@@ -47,23 +53,7 @@
         margin-bottom: 64px
 
       .ACG__Create
-        display: flex
-        justify-content: center
-        align-items: center
-        padding: 16px 0
-
-        font: 500 1.4rem/1em 'Roboto', sans-serif
-
-        border: 0
-        border-radius: 8px
-        background-color: #ea4335
-        color: #fff
-
-        cursor: pointer
-        transition: filter 0.2s ease-in-out
-
-        &:hover
-          filter: brightness(.9)
+        background-color: $google-red
 
         .ACGC__Logo
           margin-right: 8px
@@ -75,22 +65,22 @@
 
       width: 100%
       font-size: 1.4rem
-      color: #a8a8b3
+      color: $lt-gray
 
-      margin: 32px 0
+      margin: 32px 8px
 
       &:before,
       &:after
         flex: 1
         height: 1px
-        background-color: #a8a8b3
+        background-color: $lt-gray
         content: ''
 
       &:before
-        margin-right: 8px
+        margin-right: 16px
 
       &:after
-        margin-left: 8px
+        margin-left: 16px
 
     .AC__Room
       display: flex
@@ -101,5 +91,5 @@
         margin-bottom: 16px
         border-radius: 8px
         padding: 20px 16px
-        background: #fff
-        border: 1px solid #a8a8b3
+        background: $white
+        border: 1px solid $lt-gray

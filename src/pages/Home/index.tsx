@@ -1,3 +1,5 @@
+import { ReactElement } from 'react'
+
 import questionsIllustration from '../../assets/images/questions-illustration.svg'
 import applicationLogo from '../../assets/images/logo.svg'
 import googleLogo from '../../assets/images/google-logo.svg'
@@ -6,7 +8,7 @@ import { Button } from '../../components/Button'
 
 import styles from './Home.module.sass'
 
-export const Home = () => (
+export const Home = (): ReactElement => (
   <section className={styles.Home}>
     <aside className={styles.Calling}>
       <img
@@ -27,15 +29,14 @@ export const Home = () => (
             className={styles.ACG__Letmesak}
           />
 
-          {/* @todo: Convert this <button> to a <Button /> component */}
-          <button className={styles.ACG__Create}>
+          <Button className={styles.ACG__Create}>
             <img
               src={googleLogo}
               alt="Google's logo"
               className={styles.ACGC__Logo}
             />
-            Create your room with Google!
-          </button>
+            Create your room with Google
+          </Button>
         </div>
 
         <p className={styles.AC__Divider}>or join a created room</p>
