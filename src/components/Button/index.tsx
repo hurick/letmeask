@@ -1,20 +1,20 @@
+import { ReactElement, ButtonHTMLAttributes } from 'react'
+
 import styles from './Button.module.sass'
 
-// @todo: accept onClick prop
+export const Button = ({ type, className, children, ...rest }: ButtonHTMLAttributes<HTMLButtonElement>): ReactElement => {
+  const BUTTON_CLASSES = [
+    styles.Button,
+    className && className
+  ].join(' ')
 
-type ButtonProps = {
-  type: 'button' | 'submit' | 'reset',
-  className?: string,
-  disabled?: boolean,
-  children: React.ReactNode
+  return (
+    <button
+      type={type ?? 'button'}
+      className={BUTTON_CLASSES}
+      {...rest}
+    >
+      {children}
+    </button>
+  )
 }
-
-export const Button = ({ type, className, disabled, children }: ButtonProps) => (
-  <button
-    type={type}
-    className={`${styles.Button} ${className ?? ''}`}
-    disabled={disabled}
-  >
-    {children}
-  </button>
-)

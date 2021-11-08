@@ -1,19 +1,24 @@
+$white: #fff
+$purple: #835afd
+
 .Button
   display: flex
   justify-content: center
   align-items: center
-  padding: 20px 0
+  height: 58px
 
   font: 500 1.4rem/1em 'Roboto', sans-serif
 
   border: 0
   border-radius: 8px
-  background-color: #835afd
+  background-color: $purple
 
-  color: #fff
+  color: $white
 
   cursor: pointer
-  transition: filter 0.2s ease-in-out
+  transition-property: filter
+  transition-duration: .2s
+  transition-timing-function: ease-in-out
 
   &:not(:disabled):hover
     filter: brightness(.9)
