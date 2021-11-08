@@ -1,0 +1,105 @@
+.Home
+  display: flex
+  align-items: stretch
+  height: 100vh
+
+.Calling
+  flex: 1
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+  background-color: #835afd
+  color: #fff
+
+  .C__Illustration
+    max-width: 328px
+
+  .C__Title
+    font: 700 3.6rem/1em 'Poppins', sans-serif
+    margin: 16px 0
+
+  .C__Subtitle
+    font: 400 2.4rem/1em 'Poppins', sans-serif
+    color: #f8f8f8
+
+.Auth
+  flex: 1.7
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+
+  .A__Content
+    display: flex
+    max-width: 328px
+    align-items: stretch
+    flex-direction: column
+    width: 100%
+
+    .AC__Google
+      display: flex
+      flex-direction: column
+
+      .ACG__Letmesak
+        align-self: center
+        margin-bottom: 64px
+
+      .ACG__Create
+        display: flex
+        justify-content: center
+        align-items: center
+        padding: 16px 0
+
+        font: 500 1.4rem/1em 'Roboto', sans-serif
+
+        border: 0
+        border-radius: 8px
+        background-color: #ea4335
+        color: #fff
+
+        cursor: pointer
+        transition: filter 0.2s ease-in-out
+
+        &:hover
+          filter: brightness(.9)
+
+        .ACGC__Logo
+          margin-right: 8px
+
+    .AC__Divider
+      display: flex
+      justify-content: center
+      align-items: center
+
+      width: 100%
+      font-size: 1.4rem
+      color: #a8a8b3
+
+      margin: 32px 0
+
+      &:before,
+      &:after
+        flex: 1
+        height: 1px
+        background-color: #a8a8b3
+        content: ''
+
+      &:before
+        margin-right: 8px
+
+      &:after
+        margin-left: 8px
+
+    .AC__Room
+      display: flex
+      flex-direction: column
+      justify-content: center
+
+      .ACR__Number
+        margin-bottom: 16px
+        border-radius: 8px
+        padding: 20px 16px
+        background: #fff
+        border: 1px solid #a8a8b3
