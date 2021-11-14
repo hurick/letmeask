@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import { Link } from 'react-router-dom'
 
 import questionsIllustration from '../../assets/images/questions-illustration.svg'
 import applicationLogo from '../../assets/images/logo.svg'
@@ -7,7 +8,7 @@ import { Button } from '../../components/Button'
 
 import styles from './CreateRoom.module.sass'
 
-export const CreateRoom = (): ReactElement => (
+const CreateRoom = (): ReactElement => (
   <section className={styles.Home}>
     <aside className={styles.Calling}>
       <img
@@ -42,9 +43,11 @@ export const CreateRoom = (): ReactElement => (
         </form>
 
         <p className={styles.AC__Join}>
-          Want to join a existing room? <a href="/" title="Click here" className={styles.ACJ__Link}>Click here!</a>
+          Want to join a existing room? <Link to="/" title="Click here" className={styles.ACJ__Link}>Click here!</Link>
         </p>
       </div>
     </main>
   </section>
 )
+
+export default CreateRoom
