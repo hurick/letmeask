@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom'
 
 import './services/firebase'
 
-import { Home } from './pages/Home'
+import { Router } from './router/Router'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Home />
+    <Router />
   </React.StrictMode>,
   document.getElementById('root')
 )
