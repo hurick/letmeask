@@ -48,7 +48,7 @@ export const Home = (): ReactElement => (
             className={styles.ACR__Number}
           />
 
-          <Button type="submit" className={styles.ACR__Join}>
+          <Button type="submit">
             Join room
           </Button>
         </form>
