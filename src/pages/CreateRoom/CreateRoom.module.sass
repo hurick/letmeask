@@ -1,0 +1,82 @@
+$white: #fff
+$dk-white: darken($white, 3%)
+$lt-gray: #a8a8b3
+$dk-gray: #737380
+$purple: #835afd
+$google-red: #ea4335
+
+$poppins: 'Poppins', sans-serif
+$roboto: 'Roboto', sans-serif
+
+.Home
+  display: flex
+  align-items: stretch
+  height: 100vh
+
+.Calling
+  flex: 1
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+
+  background-color: $purple
+  color: $white
+
+  .C__Illustration
+    max-width: 328px
+
+  .C__Title
+    font: 700 3.6rem/1em $poppins
+    margin: 16px 0
+
+  .C__Subtitle
+    font: 400 2.4rem/1em $poppins
+    color: $dk-white
+
+.Auth
+  flex: 1.7
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+
+  .A__Content
+    display: flex
+    max-width: 328px
+    align-items: stretch
+    flex-direction: column
+    width: 100%
+
+    .AC__Letmesak
+      align-self: center
+      margin-bottom: 64px
+
+    .AC__Title
+      font: 700 2.4rem/1em $poppins
+      margin-bottom: 32px
+      align-self: center
+
+    .AC__Room
+      display: flex
+      flex-direction: column
+      justify-content: center
+
+      .ACR__Name
+        margin-bottom: 16px
+        border-radius: 8px
+        padding: 20px 16px
+        background: $white
+        border: 1px solid $lt-gray
+
+    .AC__Join
+      align-self: center
+
+      font: 400 1.4rem/1em $roboto
+      color: $dk-gray
+
+      margin-top: 16px
+
+      .ACJ__Link
+        color: $purple
+
