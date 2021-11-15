@@ -13,7 +13,7 @@ export const Router = (): ReactElement => (
       <AuthContextProvider>
         <Routes>
           <Route path="/" element={<Home/ >} />
-          <Route path="rooms/create" element={<CreateRoom/ >} />
+          <Route path="/rooms/create" element={<CreateRoom/ >} />
         </Routes>
       </AuthContextProvider>
     </Suspense>
