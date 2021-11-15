@@ -7,7 +7,9 @@ type AuthContextType = {
   signInWithGoogle: () => Promise<void>
 }
 
-type AuthContextProviderProps = { children: ReactNode }
+type AuthContextProviderProps = {
+  children: ReactNode
+}
 
 type User = {
   id: string
