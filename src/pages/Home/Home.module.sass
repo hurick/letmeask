@@ -96,3 +96,11 @@ $roboto: 'Roboto', sans-serif
         padding: 20px 16px
         background: $white
         border: 1px solid $lt-gray
+
+        transition-property: border-color
+        transition-timing-function: ease-in-out
+        transition-duration: .2s
+
+        &:focus
+          border-color: darken($lt-gray, 25%)
+          outline: 0

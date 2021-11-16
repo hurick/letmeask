@@ -55,6 +55,7 @@ const Home = (): ReactElement => {
               type="text"
               placeholder="Insert created room number"
               className={styles.ACR__Number}
+              autoFocus
             />
 
             <Button type="submit">Join room</Button>
