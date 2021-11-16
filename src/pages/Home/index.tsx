@@ -1,7 +1,9 @@
-import { ReactElement } from 'react'
+import { ReactElement, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { useAuth } from '../../hooks/useAuth'
+
+import { getDatabase, ref, get } from 'firebase/database'
 
 import questionsIllustration from '../../assets/images/questions-illustration.svg'
 import applicationLogo from '../../assets/images/logo.svg'
@@ -13,11 +15,28 @@ import styles from './Home.module.sass'
 
 const Home = (): ReactElement => {
   const navigate = useNavigate()
+
   const { user, signInWithGoogle } = useAuth()
+  const [roomCode, setRoomCode ] = useState<string>()
 
   const handleCreateRoom = async (): Promise<void> => {
     !user && await signInWithGoogle()
     navigate('/rooms/create')
+  }
+
+  const handleJoinRoom = async (ev: FormEvent): Promise<void> => {
+    ev.preventDefault()
+
+    if (roomCode?.trim() === '') { return } else {
+      const roomRef = await get(ref(getDatabase(), `rooms/${roomCode}`))
+
+      if (!roomRef.exists()) {
+        alert('Room does not exists :(')
+        return
+      }
+
+      navigate(`/rooms/${roomCode}`)
+    }
   }
 
   return (
@@ -53,12 +72,14 @@ const Home = (): ReactElement => {
 
           <p className={styles.AC__Divider}>or join a created room</p>
 
-          <form className={styles.AC__Room}>
+          <form className={styles.AC__Room} onSubmit={handleJoinRoom}>
             <input
+              autoFocus
               type="text"
               placeholder="Insert created room number"
               className={styles.ACR__Number}
-              autoFocus
+              onChange={ev => setRoomCode(ev.target.value)}
+              value={roomCode}
             />
 
             <Button type="submit">Join room</Button>
