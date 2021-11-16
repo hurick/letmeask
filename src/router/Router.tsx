@@ -1,5 +1,4 @@
 import { lazy, ReactElement, Suspense } from 'react'
-
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import AuthContextProvider from '../contexts/Auth'
