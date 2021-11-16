@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { useAuth } from '../../hooks/useAuth'
 
@@ -11,10 +12,12 @@ import { Button } from '../../components/Button'
 import styles from './Home.module.sass'
 
 const Home = (): ReactElement => {
+  const navigate = useNavigate()
   const { user, signInWithGoogle } = useAuth()
 
-  const handleCreateRoom = (): void => {
-    !user && signInWithGoogle()
+  const handleCreateRoom = async (): Promise<void> => {
+    !user && await signInWithGoogle()
+    navigate('/rooms/create')
   }
 
   return (
