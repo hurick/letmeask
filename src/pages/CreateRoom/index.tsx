@@ -35,6 +35,7 @@ const CreateRoom = (): ReactElement => (
             type="text"
             placeholder="What's the room name?"
             className={styles.ACR__Name}
+            autoFocus
           />
 
           <Button type="submit">
