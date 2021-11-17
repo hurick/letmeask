@@ -1,0 +1,107 @@
+$white: #fff
+$dk-white: #fefefe
+$lt-gray: #e2e2e2
+$dk-gray: #737380
+$black: #29292e
+$box-shadow: rgba(0, 0, 0, .04)
+$purple: #835afd
+$pink: #e559f9
+
+$poppins: 'Poppins', sans-serif
+$roboto: 'Roboto', sans-serif
+
+.R__Header
+  display: flex
+  flex-direction: row
+  justify-content: space-around
+  align-items: center
+
+  margin-bottom: 64px
+  padding: 32px 16px
+
+  border-bottom: 1px solid $lt-gray
+
+  .RH__Logo
+    max-height: 50px
+
+.R__Main
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+  max-width: 800px
+  margin: auto
+
+  .RM__Heading
+    display: flex
+    flex-direction: row
+    align-items: center
+
+    margin-bottom: 32px
+
+    font: 700 2.4rem/1em $poppins
+
+    .RMH__Counter
+      padding: 8px 16px
+      margin-left: 16px
+
+      font: 500 1.4rem/1em $roboto
+      color: $white
+
+      background-color: $pink
+      border-radius: 50px
+
+  .RM__Form,
+  .RMF__Question
+    width: 100%
+
+  .RMF__Question
+    min-height: 200px
+    max-height: 500px
+
+    margin-bottom: 16px
+    padding: 16px
+
+    font: 400 1.6rem/1.5em $roboto
+
+    box-shadow: 0 2px 12px $box-shadow
+    background-color: $dk-white
+    border-radius: 8px
+    border: 1px solid $dk-white
+
+    resize: vertical
+    outline: 0
+
+    transition-property: border-color
+    transition-timing-function: ease-in-out
+    transition-duration: .2s
+
+    &:focus
+      border-color: darken($dk-white, 25%)
+
+  .RMF__Footer
+    display: flex
+    flex-direction: row
+    justify-content: space-between
+    align-items: center
+
+    .RMFF__Cta
+      font: 500 1.4rem/1em $roboto
+      color: $dk-gray
+
+      .RMFFC__Login
+        background-color: transparent
+        border: 0
+        padding: 0
+
+        font: 500 1.4rem/1em $roboto
+        text-decoration: underline
+        color: $purple
+
+        cursor: pointer
+
+        &:hover
+          text-decoration: none
+
+    .RMFF__Send
+      padding: 0 32px
