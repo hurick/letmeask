@@ -1,0 +1,48 @@
+$white: #fff
+$black: #29292e
+$purple: #835afd
+
+$roboto: 'Roboto', sans-serif
+
+.Code
+  display: flex
+  flex-direction: row
+  align-items: center
+
+  padding: 0
+  margin: 0
+
+  border: 1px solid $purple
+  border-radius: 8px
+  background: transparent
+
+  cursor: pointer
+  overflow: hidden
+
+  transition-property: background-color
+  transition-timing-function: ease-in-out
+  transition-duration: .2s
+
+  &:hover
+    background-color: $purple
+
+    .C__Text
+      color: $white
+
+  .C__Image
+    display: flex
+    justify-content: center
+    align-items: center
+
+    padding: 12px
+    background-color: $purple
+
+  .C__Text
+    padding: 0 16px
+
+    font: 500 1.4rem/1em $roboto
+    color: $black
+
+    transition-property: color
+    transition-timing-function: ease-in-out
+    transition-duration: .2s
