@@ -1,12 +1,16 @@
 import { ReactElement } from 'react'
+import { useParams } from 'react-router-dom'
 
 import applicationLogo from '../../assets/images/logo.svg'
 
 import { Button } from '../../components/Button'
+import { Code } from '../../components/Code'
 
 import styles from './Room.module.sass'
 
 const Room = (): ReactElement => {
+  const params = useParams() as { id: string }
+
   return (
     <section>
       <header className={styles.R__Header}>
@@ -17,9 +21,7 @@ const Room = (): ReactElement => {
         />
 
         <div className={styles.RH__Room}>
-          <button className={styles.RHR__Copy}>
-            <span className={styles.RHRC__Code}>code</span>
-          </button>
+          <Code code={params.id} />
         </div>
       </header>
 
