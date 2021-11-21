@@ -3,17 +3,15 @@ import { useParams } from 'react-router-dom'
 
 import { getDatabase, ref, push } from 'firebase/database'
 
-import applicationLogo from '../../../assets/images/logo.svg'
-
 import { useAuth } from '../../../hooks/useAuth'
 import { useRoom } from '../../../hooks/useRoom'
 
 import { Avatar } from '../../../components/Avatar'
 import { Button } from '../../../components/Button'
-import { Code } from '../../../components/Code'
 import { Question } from '../../../components/Question'
 
 import styles from './Room.module.sass'
+import { Header } from '../../../components/Header'
 
 const Room = (): ReactElement => {
   const params = useParams() as { id: string }
@@ -49,17 +47,7 @@ const Room = (): ReactElement => {
 
   return (
     <Fragment>
-      <header className={styles.R__Header}>
-        <img
-          src={applicationLogo}
-          alt="Letmeask's logo"
-          className={styles.RH__Logo}
-        />
-
-        <div className={styles.RH__Room}>
-          <Code code={params.id} />
-        </div>
-      </header>
+      <Header roomId={params.id} />
 
       <main className={styles.R__Main}>
         <h1 className={styles.RM__Heading}>
