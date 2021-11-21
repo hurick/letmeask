@@ -16,12 +16,23 @@ $purple: #835afd
   color: $white
 
   cursor: pointer
-  transition-property: filter
+  transition-property: filter, background-color, color
   transition-duration: .2s
   transition-timing-function: ease-in-out
 
   &:not(:disabled):hover
     filter: brightness(.9)
+
+  &.B__IsOutlined
+    color: $purple
+
+    background-color: transparent
+    border: 1px solid $purple
+
+    &:not(:disabled):hover
+      color: $white
+      background-color: $purple
+      filter: none
 
   &:disabled
     opacity: .6
