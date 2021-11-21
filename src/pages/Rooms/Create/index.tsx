@@ -5,12 +5,12 @@ import { useAuth } from '../../../hooks/useAuth'
 
 import { getDatabase, ref, push } from 'firebase/database'
 
-import questionsIllustration from '../../assets/images/questions-illustration.svg'
-import applicationLogo from '../../assets/images/logo.svg'
+import questionsIllustration from '../../../assets/images/questions-illustration.svg'
+import applicationLogo from '../../../assets/images/logo.svg'
 
 import { Button } from '../../../components/Button'
 
-import styles from './CreateRoom.module.sass'
+import styles from './Create.module.sass'
 
 const Create = (): ReactElement => {
   const navigate = useNavigate()
