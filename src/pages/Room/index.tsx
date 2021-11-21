@@ -104,7 +104,7 @@ const Room = (): ReactElement => {
         <h1 className={styles.RM__Heading}>
           <span className={styles.RMH__Title}>{ roomTitle }</span>
           {questionsList?.length > 0 && <span className={styles.RMH__Counter}>
-            {questionsList.length} {questionsList.length > 1 ? 'Questions' : 'Question'}
+            {questionsList.length} {questionsList.length === 1 ? 'Question' : 'Questions'}
           </span>}
         </h1>
 
@@ -117,14 +117,11 @@ const Room = (): ReactElement => {
           />
 
           <div className={styles.RMF__Footer}>
-            { !user ? (
-              <p className={styles.RMFF__Cta}>To ask anything, please <button className={styles.RMFFC__Login} onClick={signInWithGoogle}>log in</button>.</p>
-            ) : (
-              <Avatar
-                avatar={user.avatar}
-                name={user.name}
-              />
-            ) }
+            { !user
+              ? <p className={styles.RMFF__Cta}>To ask anything, please <button className={styles.RMFFC__Login} onClick={signInWithGoogle}>log in</button>.</p>
+              : <Avatar avatar={user.avatar} name={user.name} />
+            }
+
             <Button
               type="submit"
               className={styles.RMFF__Send}
@@ -136,14 +133,17 @@ const Room = (): ReactElement => {
         </form>
 
         <ul className={styles.RM__Questions}>
-          {questionsList.map(question => (
-            <Question
-              key={question.id}
-              content={question.content}
-              authorAvatar={question.author.avatar}
-              authorName={question.author.name}
-            />
-          ))}
+          {questionsList.length > 0
+            ? questionsList.map(question => (
+              <Question
+                key={question.id}
+                content={question.content}
+                authorAvatar={question.author.avatar}
+                authorName={question.author.name}
+              />
+            ))
+            : <p>No questions yet. Be the first one!</p>
+          }
         </ul>
       </main>
     </Fragment>
