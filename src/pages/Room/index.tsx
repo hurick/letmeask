@@ -1,11 +1,12 @@
-import { Fragment, ReactElement, useState, useEffect, FormEvent } from 'react'
+import { Fragment, ReactElement, useState, FormEvent } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { getDatabase, ref, push, onValue } from 'firebase/database'
+import { getDatabase, ref, push } from 'firebase/database'
 
 import applicationLogo from '../../assets/images/logo.svg'
 
 import { useAuth } from '../../hooks/useAuth'
+import { useRoom } from '../../hooks/useRoom'
 
 import { Avatar } from '../../components/Avatar'
 import { Button } from '../../components/Button'
@@ -14,34 +15,13 @@ import { Question } from '../../components/Question'
 
 import styles from './Room.module.sass'
 
-type QuestionListTypes = {
-  id: string
-  author: {
-    name: string
-    avatar: string
-  }
-  content: string
-  isAnswered: boolean
-  isHighlighted: boolean
-}
-
-type FirebaseQuestions = Record<string, {
-  author: {
-    name: string
-    avatar: string
-  }
-  content: string
-  isAnswered: boolean
-  isHighlighted: boolean
-}>
-
 const Room = (): ReactElement => {
-  const { user, signInWithGoogle } = useAuth()
   const params = useParams() as { id: string }
 
-  const [roomTitle, setRoomTitle] = useState<string>('')
+  const { user, signInWithGoogle } = useAuth()
+  const { roomTitle, questionsList } = useRoom(params)
+
   const [newQuestion, setNewQuestion] = useState<string>('')
-  const [questionsList, setQuestionsList] = useState<QuestionListTypes[]>([])
 
   const handleNewQuestion = async (ev: FormEvent): Promise<void> => {
     ev.preventDefault()
@@ -66,25 +46,6 @@ const Room = (): ReactElement => {
 
     setNewQuestion('')
   }
-
-  useEffect(() => {
-    const roomRef = ref(getDatabase(), `rooms/${params.id}`)
-
-    onValue(roomRef, room => {
-      const databaseRoom = room.val()
-      const firebaseQuestions: FirebaseQuestions = databaseRoom?.questions
-      const parsedQuestions = Object.entries(firebaseQuestions ?? []).map(([key, value]) => ({
-        id: key,
-        content: value.content,
-        author: value.author,
-        isHighlighted: value.isHighlighted,
-        isAnswered: value.isAnswered
-      }))
-
-      setRoomTitle(databaseRoom.title)
-      setQuestionsList(parsedQuestions)
-    })
-  }, [params.id])
 
   return (
     <Fragment>
