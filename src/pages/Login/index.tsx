@@ -11,9 +11,9 @@ import googleLogo from '../../assets/images/google-logo.svg'
 
 import { Button } from '../../components/Button'
 
-import styles from './Home.module.sass'
+import styles from './Login.module.sass'
 
-const Home = (): ReactElement => {
+const Login = (): ReactElement => {
   const navigate = useNavigate()
 
   const { user, signInWithGoogle } = useAuth()
@@ -90,4 +90,4 @@ const Home = (): ReactElement => {
   )
 }
 
-export default Home
+export default Login

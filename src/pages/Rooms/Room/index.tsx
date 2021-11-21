@@ -5,13 +5,13 @@ import { getDatabase, ref, push } from 'firebase/database'
 
 import applicationLogo from '../../assets/images/logo.svg'
 
-import { useAuth } from '../../hooks/useAuth'
-import { useRoom } from '../../hooks/useRoom'
+import { useAuth } from '../../../hooks/useAuth'
+import { useRoom } from '../../../hooks/useRoom'
 
-import { Avatar } from '../../components/Avatar'
-import { Button } from '../../components/Button'
-import { Code } from '../../components/Code'
-import { Question } from '../../components/Question'
+import { Avatar } from '../../../components/Avatar'
+import { Button } from '../../../components/Button'
+import { Code } from '../../../components/Code'
+import { Question } from '../../../components/Question'
 
 import styles from './Room.module.sass'
 
