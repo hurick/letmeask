@@ -4,13 +4,13 @@ import { useParams } from 'react-router-dom'
 import { getDatabase, ref, push, onValue } from 'firebase/database'
 
 import applicationLogo from '../../assets/images/logo.svg'
-import likeImg from '../../assets/images/like.svg'
 
 import { useAuth } from '../../hooks/useAuth'
 
 import { Avatar } from '../../components/Avatar'
 import { Button } from '../../components/Button'
 import { Code } from '../../components/Code'
+import { Question } from '../../components/Question'
 
 import styles from './Room.module.sass'
 
@@ -137,17 +137,12 @@ const Room = (): ReactElement => {
 
         <ul className={styles.RM__Questions}>
           {questionsList.map(question => (
-            <li key={question.id} className={styles.RMQ__Question}>
-              <p className={styles.RMQQ__Content}>{question.content}</p>
-
-              <div className={styles.RMQQ__Footer}>
-                <Avatar avatar={question.author.avatar} name={question.author.name} />
-                <button className={styles.RMQQF__Like}>
-                  <span className={styles.RMQQFL__Counter}>21</span>
-                  <img src={likeImg} alt="Thumbs up" />
-                </button>
-              </div>
-            </li>
+            <Question
+              key={question.id}
+              content={question.content}
+              authorAvatar={question.author.avatar}
+              authorName={question.author.name}
+            />
           ))}
         </ul>
       </main>
