@@ -15,7 +15,7 @@ const Admin = (): ReactElement => {
 
   return (
     <Fragment>
-      <Header roomId={params.id} />
+      <Header isAdmin roomId={params.id} />
 
       <main className={styles.R__Main}>
         <h1 className={styles.RM__Heading}>
