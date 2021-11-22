@@ -6,12 +6,13 @@ import { getDatabase, ref, push } from 'firebase/database'
 import { useAuth } from '../../../hooks/useAuth'
 import { useRoom } from '../../../hooks/useRoom'
 
+import { Question } from '../../../components/Question'
+import { Header } from '../../../components/Header'
 import { Avatar } from '../../../components/Avatar'
 import { Button } from '../../../components/Button'
-import { Question } from '../../../components/Question'
+import { Like } from '../../../components/Icons/Like'
 
 import styles from './Room.module.sass'
-import { Header } from '../../../components/Header'
 
 const Room = (): ReactElement => {
   const params = useParams() as { id: string }
@@ -89,7 +90,12 @@ const Room = (): ReactElement => {
                 content={question.content}
                 authorAvatar={question.author.avatar}
                 authorName={question.author.name}
-              />
+              >
+                <button className={styles.RMQ__Like}>
+                  <span className={styles.RMQL__Counter}>21</span>
+                  <Like stroke={`#737380`} />
+                </button>
+              </Question>
             ))
             : <p>No questions yet. Be the first one!</p>
           }
