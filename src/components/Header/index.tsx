@@ -10,9 +10,10 @@ import styles from './Header.module.sass'
 type HeaderProps = {
   roomId: string
   isAdmin?: boolean
+  onEndRoom?: () => void
 }
 
-export const Header = ({ roomId, isAdmin }: HeaderProps): ReactElement => {
+export const Header = ({ roomId, isAdmin, onEndRoom }: HeaderProps): ReactElement => {
   const ACTIONS_CLASES = [
     styles.H__Actions,
     isAdmin && styles.HA__Multiple
@@ -28,7 +29,7 @@ export const Header = ({ roomId, isAdmin }: HeaderProps): ReactElement => {
 
       <div className={ACTIONS_CLASES}>
         <Code code={roomId} />
-        { isAdmin && <Button isOutlined className={styles.HAM__Close}>Encerrar sala</Button> }
+        { isAdmin && <Button onClick={onEndRoom} isOutlined className={styles.HAM__Close}>Encerrar sala</Button> }
       </div>
     </header>
   )
