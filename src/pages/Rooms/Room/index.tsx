@@ -1,7 +1,7 @@
 import { Fragment, ReactElement, useState, FormEvent } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { getDatabase, ref, push } from 'firebase/database'
+import { getDatabase, ref, push, remove } from 'firebase/database'
 
 import { useAuth } from '../../../hooks/useAuth'
 import { useRoom } from '../../../hooks/useRoom'
@@ -44,6 +44,14 @@ const Room = (): ReactElement => {
     await push(ref(getDatabase(), `rooms/${params.id}/questions`), question)
 
     setNewQuestion('')
+  }
+
+  const handleLike = async (questionId: string, likeId: string | undefined): Promise<void> => {
+    !user
+      ? alert('You need to log in first.')
+      : likeId
+        ? await remove(ref(getDatabase(), `rooms/${params.id}/questions/${questionId}/likes/${likeId}`))
+        : await push(ref(getDatabase(), `rooms/${params.id}/questions/${questionId}/likes`), { authorId: user?.id })
   }
 
   return (
@@ -91,9 +99,9 @@ const Room = (): ReactElement => {
                 authorAvatar={question.author.avatar}
                 authorName={question.author.name}
               >
-                <button className={styles.RMQ__Like}>
-                  <span className={styles.RMQL__Counter}>21</span>
-                  <Like stroke={`#737380`} />
+                <button className={styles.RMQ__Like} onClick={() => handleLike(question.id, question.likeId)}>
+                  { question.likeCount > 0 && <span className={styles.RMQL__Counter}>{question.likeCount}</span> }
+                  <Like stroke={`${question.likeId ? '#835afd' : '#737380'}`} />
                 </button>
               </Question>
             ))
