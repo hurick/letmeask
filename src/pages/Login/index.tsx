@@ -31,7 +31,12 @@ const Login = (): ReactElement => {
       const roomRef = await get(ref(getDatabase(), `rooms/${roomCode}`))
 
       if (!roomRef.exists()) {
-        alert('Room does not exists :(')
+        alert('Room does not exists.')
+        return
+      }
+
+      if (roomRef.val().closedAt) {
+        alert('Room already closed.')
         return
       }
 
