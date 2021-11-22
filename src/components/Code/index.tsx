@@ -10,7 +10,7 @@ export const Code = ({ code }: CodeProps) => {
   return (
     <button
       className={styles.Code}
-      onClick={() => navigator.clipboard.writeText(code)}
+      onClick={() => navigator?.clipboard?.writeText(code)}
       title="Copy code to clipboard"
     >
       <div className={styles.C__Image}>
