@@ -1,8 +1,7 @@
 import { ReactElement } from 'react'
 
+import { Like } from '../Icons/Like'
 import { Avatar } from '../Avatar'
-
-import likeImg from '../../assets/images/like.svg'
 
 import styles from './Question.module.sass'
 
@@ -22,7 +21,7 @@ export const Question = ({ content, authorAvatar, authorName }: QuestionProps): 
 
         <button className={styles.QF__Like}>
           <span className={styles.QFL__Counter}>21</span>
-          <img src={likeImg} alt="Thumbs up" />
+          <Like stroke="#737380" />
         </button>
       </div>
     </li>
