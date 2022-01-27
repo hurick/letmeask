@@ -17,7 +17,7 @@ const Login = (): ReactElement => {
   const navigate = useNavigate()
 
   const { user, signInWithGoogle } = useAuth()
-  const [roomCode, setRoomCode ] = useState<string>()
+  const [roomCode, setRoomCode ] = useState<string>('')
 
   const handleCreateRoom = async (): Promise<void> => {
     !user && await signInWithGoogle()
