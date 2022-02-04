@@ -90,24 +90,22 @@ const Room = (): ReactElement => {
           </div>
         </form>
 
-        <ul className={styles.RM__Questions}>
-          {questionsList.length > 0
-            ? questionsList.map(question => (
-              <Question
-                key={question.id}
-                content={question.content}
-                authorAvatar={question.author.avatar}
-                authorName={question.author.name}
-              >
-                <button className={styles.RMQ__Like} onClick={() => handleLike(question.id, question.likeId)}>
-                  { question.likeCount > 0 && <span className={styles.RMQL__Counter}>{question.likeCount}</span> }
-                  <Like stroke={`${question.likeId ? '#835afd' : '#737380'}`} />
-                </button>
-              </Question>
-            ))
-            : <p>No questions yet. Be the first one!</p>
-          }
-        </ul>
+        {questionsList.length > 0 ? questionsList.map(question => (
+          <ul className={styles.RM__Questions}>
+            <Question
+              key={question.id}
+              content={question.content}
+              authorAvatar={question.author.avatar}
+              authorName={question.author.name}
+            >
+
+              <button className={styles.RMQ__Like} onClick={() => handleLike(question.id, question.likeId)}>
+                { question.likeCount > 0 && <span className={styles.RMQL__Counter}>{question.likeCount}</span> }
+                <Like stroke={`${question.likeId ? '#835afd' : '#737380'}`} />
+              </button>
+            </Question>
+          </ul>
+        )) : <p className={styles.RMQ__Empty}>No questions yet. Be the first one!</p> }
       </main>
     </Fragment>
   )
