@@ -23,7 +23,7 @@ const Admin = (): ReactElement => {
       && await remove(ref(getDatabase(), `/rooms/${params.id}/questions/${questionId}`))
   }
 
-  const handleEndRoom = async (): Promise<void> => {
+  const handleCloseRoom = async (): Promise<void> => {
     await update(ref(getDatabase(), `/rooms/${params.id}`), {
       closedAt: new Date()
     })
@@ -36,7 +36,7 @@ const Admin = (): ReactElement => {
       <Header
         roomId={params.id}
         isAdmin
-        onEndRoom={handleEndRoom}
+        onEndRoom={handleCloseRoom}
       />
 
       <main className={styles.R__Main}>
