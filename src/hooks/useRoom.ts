@@ -14,7 +14,7 @@ type FirebaseQuestions = Record<string, {
   likes: Record<string, { authorId: string }>
 }>
 
-type QuestionListTypes = {
+export type QuestionListTypes = {
   id: string
   author: {
     name: string

@@ -1,6 +1,9 @@
 $dk-white: #fefefe
+$lt-gray: #dbdcdd
 $dk-gray: #737380
 $black: #29292e
+$lt-purple: #f4f0ff
+$purple: #835afd
 
 $roboto: 'Roboto', sans-serif
 $poppins: 'Poppins', sans-serif
@@ -15,8 +18,21 @@ $poppins: 'Poppins', sans-serif
   padding: 24px
 
   background-color: red
+  border: 1px solid transparent
   border-radius: 8px
   background-color: $dk-white
+
+  transition-property: border-color, background-color
+  transition-duration: .2s
+  transition-timing-function: ease-in-out
+
+  &.Q__Highlighted
+    background-color: $lt-purple
+    border-color: $purple
+
+  &.Q__Answered
+    background-color: $lt-gray
+    border-color: transparent
 
   .Q__Content
     font: 400 normal 1.6rem/1.5em $roboto
@@ -25,11 +41,17 @@ $poppins: 'Poppins', sans-serif
   .Q__Footer
     display: flex
     flex-direction: row
+    align-items: flex-end
     justify-content: space-between
-    align-items: center
 
     width: 100%
     margin-top: 24px
+
+    .QF__Actions
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: 16px
 
   &:not(:last-child)
     margin-bottom: 8px

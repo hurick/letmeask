@@ -3,11 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom'
 
 import { ref, getDatabase, remove, update } from 'firebase/database'
 
-import { useRoom } from '../../../hooks/useRoom'
+import { useRoom, QuestionListTypes } from '../../../hooks/useRoom'
 
 import { Header } from '../../../components/Header'
 import { Question } from '../../../components/Question'
 
+import checkImg from '../../../assets/images/check.svg'
+import answerImg from '../../../assets/images/answer.svg'
 import deleteImg from '../../../assets/images/delete.svg'
 
 import styles from './Admin.module.sass'
@@ -18,9 +20,23 @@ const Admin = (): ReactElement => {
 
   const { roomTitle, questionsList } = useRoom(params)
 
-  const handleDelete = async (questionId: string): Promise<void> => {
+  const handleCheckAnsweredQuestion = async (question: QuestionListTypes): Promise<void> => {
+    await update(ref(getDatabase(), `/rooms/${params.id}/questions/${question.id}`), {
+      isAnswered: !question.isAnswered,
+      isHighlighted: false
+    })
+  }
+
+  const handleHighlightQuestion = async (question: QuestionListTypes): Promise<void> => {
+    await update(ref(getDatabase(), `/rooms/${params.id}/questions/${question.id}`), {
+      isHighlighted: !question.isHighlighted,
+      isAnswered: false
+    })
+  }
+
+  const handleDeleteQuestion = async (question: QuestionListTypes): Promise<void> => {
     window.confirm('Are you sure you want to delete this question?')
-      && await remove(ref(getDatabase(), `/rooms/${params.id}/questions/${questionId}`))
+      && await remove(ref(getDatabase(), `/rooms/${params.id}/questions/${question.id}`))
   }
 
   const handleCloseRoom = async (): Promise<void> => {
@@ -55,11 +71,33 @@ const Admin = (): ReactElement => {
                 content={question.content}
                 authorAvatar={question.author.avatar}
                 authorName={question.author.name}
+                isAnswered={question.isAnswered}
+                isHighlighted={question.isHighlighted}
               >
+                {!question.isAnswered && (
+                  <Fragment>
+                    <button
+                      className={styles.RMQ__Action}
+                      title="Mark question as answered"
+                      onClick={() => handleCheckAnsweredQuestion(question)}
+                    >
+                      <img src={checkImg} alt="Mark question as answered" />
+                    </button>
+
+                    <button
+                      className={styles.RMQ__Action}
+                      title="Highlight question"
+                      onClick={() => handleHighlightQuestion(question)}
+                    >
+                      <img src={answerImg} alt="Highlight question" />
+                    </button>
+                  </Fragment>
+                )}
+
                 <button
-                  className={styles.RMQ__Delete}
-                  title="Delete this question"
-                  onClick={() => handleDelete(question.id)}
+                  className={styles.RMQ__Action}
+                  title="Delete question"
+                  onClick={() => handleDeleteQuestion(question)}
                 >
                   <img src={deleteImg} alt="Trash can" />
                 </button>

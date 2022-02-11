@@ -97,12 +97,15 @@ const Room = (): ReactElement => {
               content={question.content}
               authorAvatar={question.author.avatar}
               authorName={question.author.name}
+              isAnswered={question.isAnswered}
+              isHighlighted={question.isHighlighted}
             >
-
-              <button className={styles.RMQ__Like} onClick={() => handleLike(question.id, question.likeId)}>
-                { question.likeCount > 0 && <span className={styles.RMQL__Counter}>{question.likeCount}</span> }
-                <Like stroke={`${question.likeId ? '#835afd' : '#737380'}`} />
-              </button>
+              { !question.isAnswered && (
+                <button className={styles.RMQ__Like} onClick={() => handleLike(question.id, question.likeId)}>
+                  { question.likeCount > 0 && <span className={styles.RMQL__Counter}>{question.likeCount}</span> }
+                  <Like stroke={`${question.likeId ? '#835afd' : '#737380'}`} />
+                </button>
+              )}
             </Question>
           </ul>
         )) : <p className={styles.RMQ__Empty}>No questions yet. Be the first one!</p> }
